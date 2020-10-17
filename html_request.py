@@ -23,7 +23,7 @@ for video in videos:
     print(video)
 
     aux_position_1 = video[104:].find("'")
-    title = video[104:aux_position]
+    title = video[104:aux_position_1]
     aux_postition_2 = video[(aux_position_1+7):].find("'")
     link = video[(aux_position_1+7):aux_position_2] 
 
