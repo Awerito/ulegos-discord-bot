@@ -4,7 +4,7 @@ from requests_html import HTMLSession
 INIT_POS = 103
 
 def youtube_request(search): 
-    """Description
+    """This function parse and treats the results of an given search 
 
     Parameters
     ----------
@@ -17,7 +17,6 @@ def youtube_request(search):
         values by title and link of the search. {str : str} 
         
     """
-    
     
     # Youtube search
     search = str(search).replace(" ", "+").lower()
