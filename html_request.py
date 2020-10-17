@@ -1,11 +1,23 @@
 from requests_html import HTMLSession
 
-def youtube_request(search): 
 
-    """
+INIT_POS = 103
+
+def youtube_request(search): 
+    """Description
+
+    Parameters
+    ----------
+    search: string
+        parameter used to perform the search through youtube
+
+    Returns
+    -------
+    dictionary
+        values by title and link of the search. {str : str} 
+        
     """
     
-    INIT_POS = 103
     
     # Youtube search
     search = str(search).replace(" ", "+").lower()
@@ -14,7 +26,7 @@ def youtube_request(search):
     # Youtube request
     session = HTMLSession()
     r = session.get(search)
-    r.html.render(timeout=40)
+    r.html.render()
     
     # Video selection
     selection = "a#video-title"
