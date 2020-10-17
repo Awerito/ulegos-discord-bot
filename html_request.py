@@ -14,8 +14,20 @@ r = session.get(search)
 r.html.render()
 print("Done!")
 
+lists_results = []
+
 # Video selection
 selection = "a#video-title"
 videos = r.html.find(selection)
 for video in videos:
     print(video)
+
+    aux_position_1 = video[104].find("'")
+    title = video[104:aux_position]
+    aux_postition_2 = video[(aux_position_1+7):].find("'")
+    link = video[(aux_position_1+7):aux_position_2] 
+
+    #dictionary results
+    dictionary_links{"title":title, "link":link}
+    
+    lists_results.append(dictionary_links)
