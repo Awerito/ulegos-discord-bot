@@ -25,5 +25,5 @@ def schedule_request(search):
     
     
 
-    return html_page
+    return url_search
 
