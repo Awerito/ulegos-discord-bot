@@ -5,12 +5,12 @@ def schedule_request(search):
 
     Parameters
     ----------
-    param1 : String
+    search: str
         Number of semester you want to see
 
     Returns
     -------
-    type
+    str:
         url to schedule you want to see
         
     """
