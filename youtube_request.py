@@ -3,17 +3,17 @@ from re import findall
 
 
 def youtube_request(search): 
-    """This function parse and treats the results of an given search 
+    """Parse and treats the results of a given search 
 
     Parameters
     ----------
     search: string
-        parameter used to perform the search through youtube
+        parameter used to perform the search through YouTube
 
     Returns
     -------
-    dictionary
-        values by title and link of the search. {str : str} 
+    list[str]
+        return the 'watch?v=' link segment
         
     """
     

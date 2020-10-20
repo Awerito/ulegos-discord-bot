@@ -4,17 +4,17 @@ from requests_html import HTML
 
 
 def wikipedia_request(search): 
-    """This function parse and treats the results of an given search 
+    """This function parse and treats the results of a given search 
 
     Parameters
     ----------
     search: string
-        parameter used to perform the search through wikipedia
+        parameter used to perform the search through Wikipedia
 
     Returns
     -------
-    text: str
-        text with information about the article
+    list[str]
+        list of paragraphs with information about the article
         
     """
     
@@ -32,5 +32,4 @@ def wikipedia_request(search):
     result = []
     for p in text.find('p'):
         result.append(p.text)
-
     return result
