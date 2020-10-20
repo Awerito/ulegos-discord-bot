@@ -23,6 +23,6 @@ def reddit_request(search):
     html_page = session.read() 
     session.close()
 
-    posts = findall('/r/'+search+'/comments/\w*', str(html_page))
+    posts = findall('/r/'+search+'/comments/\w*/\w*', str(html_page))
 
     return posts
