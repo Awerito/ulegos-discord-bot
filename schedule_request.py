@@ -5,13 +5,13 @@ def schedule_request(search):
 
     Parameters
     ----------
-    param1 : type
-        Description
+    param1 : String
+        Number of semester you want to see
 
     Returns
     -------
     type
-        Description
+        url to schedule you want to see
         
     """
     #http://horarios.ulagosvirtual.cl/2do%20semestre%202020_years_days_horizontal.html#table_160
