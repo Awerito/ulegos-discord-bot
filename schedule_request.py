@@ -1,0 +1,29 @@
+from urllib.request import urlopen
+
+def schedule_request(search):
+    """Description
+
+    Parameters
+    ----------
+    param1 : type
+        Description
+
+    Returns
+    -------
+    type
+        Description
+        
+    """
+    #http://horarios.ulagosvirtual.cl/2do%20semestre%202020_years_days_horizontal.html#table_160
+    table = "table_" +str(157 + 3*search)
+    search = str(search).lower()
+    url_search = "http://horarios.ulagosvirtual.cl/2do%20semestre%202020_years_days_horizontal.html#" +str(table)
+
+    # session = urlopen(url_search) 
+    # html_page = session.read() 
+    # session.close()
+    
+    
+
+    return html_page
+
