@@ -13,7 +13,7 @@ def github_request(search):
 
     Returns
     -------
-    list[str]
+    str:
         return the 'user/repository' link segment
         
     """
