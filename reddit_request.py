@@ -11,7 +11,7 @@ def reddit_request(search):
 
     Returns
     -------
-    list[srt]
+    list[str]
         return the '/r/{search}/comments/' link segment
         
     """
