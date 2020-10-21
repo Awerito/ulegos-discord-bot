@@ -1,5 +1,4 @@
 from urllib.request import urlopen
-# from re import findall
 from requests_html import HTML
 
 
@@ -13,8 +12,8 @@ def github_request(search):
 
     Returns
     -------
-    str:
-        return the 'user/repository' link segment
+    list[Elements]:
+        return the 'user/repository' links segments
         
     """
     
@@ -33,7 +32,7 @@ def github_request(search):
     r = HTML(html=str(html_page))
 
     try:
-        repo = r.find(selection, first=True)
-        return repo.text
+        repos = r.find(selection)
+        return repos
     except:
         return "Not repo found"
