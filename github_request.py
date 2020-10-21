@@ -31,13 +31,9 @@ def github_request(search):
     # Repo selection
     selection = 'a.v-align-middle'
     r = HTML(html=str(html_page))
+
     try:
         repo = r.find(selection, first=True)
         return repo.text
     except:
         return "Not repo found"
-
-
-if __name__=="__main__":
-
-    print(github_request('linux'))
