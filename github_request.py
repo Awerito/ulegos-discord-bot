@@ -12,7 +12,7 @@ def github_request(search):
 
     Returns
     -------
-    list[Elements]:
+    list[str]:
         return the 'user/repository' links segments
         
     """
@@ -33,6 +33,7 @@ def github_request(search):
 
     try:
         repos = r.find(selection)
-        return repos
+        links = [repo.text for repo in repos]
+        return links
     except:
         return "Not repo found"
