@@ -32,8 +32,7 @@ def github_request(search):
     r = HTML(html=str(html_page))
 
     try:
-        repos = r.find(selection)
-        links = [repo.text for repo in repos]
-        return links
+        repo = r.find(selection, first=True)
+        return 'https://www.github.com/' + repo.text
     except:
         return "Not repo found"

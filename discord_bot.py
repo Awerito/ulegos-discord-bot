@@ -2,13 +2,23 @@ import discord
 from discord.ext import commands
 import os
 from dotenv import load_dotenv
+# Custom
+from scripts_requests.github_request import *
 
 
 bot = commands.Bot(command_prefix='./')
 
-@bot.command()
-async def ping(ctx):
-    await ctx.send('pong')
+
+@bot.event
+async def on_ready():
+    print("Bot ready!")
+
+
+@bot.command(aliases=['github', 'git', 'g'])
+async def _github(ctx, *, search):
+    result = github_request(search)
+    await ctx.send(result)
+
 
 load_dotenv()
 secret_key = os.getenv('DISCORD_TOKEN')
