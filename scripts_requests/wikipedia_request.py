@@ -1,4 +1,5 @@
 from urllib.request import urlopen
+from urllib.error import HTTPError
 from re import findall
 from requests_html import HTML
 
@@ -23,11 +24,13 @@ def wikipedia_request(search):
     search = "https://www.wikipedia.org/wiki/%s" % search
     
     # Wikipedia request
-    session = urlopen(search)
-    html_page = session.read()
-    session.close()
+    try:
+        session = urlopen(search)
+        html_page = session.read()
+        session.close()
+    except HTTPError:
+        return "No page was found"
     
-    # Text cleaning
     # Text selection
     selection = 'p:not(.mw-empty-elt)'
     r = HTML(html=str(html_page))
@@ -36,4 +39,4 @@ def wikipedia_request(search):
         text = r.find(selection, first=True)
         return text.text
     except:
-        return "No page was found"
+        return "Page has not text"
