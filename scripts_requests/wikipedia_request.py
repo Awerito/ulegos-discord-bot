@@ -24,12 +24,16 @@ def wikipedia_request(search):
     
     # Wikipedia request
     session = urlopen(search)
-    page_html = session.read()
+    html_page = session.read()
     session.close()
     
     # Text cleaning
-    text = HTML(html=page_html)
-    result = []
-    for p in text.find('p'):
-        result.append(p.text)
-    return result
+    # Text selection
+    selection = 'p:not(.mw-empty-elt)'
+    r = HTML(html=str(html_page))
+
+    try:
+        text = r.find(selection, first=True)
+        return text.text
+    except:
+        return "No page was found"
