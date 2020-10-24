@@ -1,6 +1,6 @@
 from urllib.request import urlopen
 from urllib.error import HTTPError
-from re import findall
+from re import search as search_re
 from requests_html import HTML
 
 def reddit_request(search):
@@ -20,18 +20,18 @@ def reddit_request(search):
 
     # Reddit search
     search = str(search).lower().replace(' ', '_')
-    search = "https://www.reddit.com/%s/" % search
+    url_search = "https://www.reddit.com/%s/" % search 
 
     # Reddit requests
     try:
-        session = urlopen(search)
+        session = urlopen(url_search)
         html_page = session.read()
         session.close()
     except HTTPError:
         return "Go to talk with your Boss of Career"
 
-    # Post selection
-    posts = findall('/' + search + '/comments/\w*/\w*', str(html_page))
+    # Post selection 
+    posts = search_re('/' + search + '/comments/\w*/\w*', str(html_page))
 
     pass
 
