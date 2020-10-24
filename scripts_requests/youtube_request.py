@@ -1,5 +1,6 @@
 from urllib.request import urlopen
-from re import findall
+from urllib.error import HTTPError
+from re import search as search_re
 
 
 def youtube_request(search): 
@@ -22,12 +23,15 @@ def youtube_request(search):
     search = "https://www.youtube.com/results?search_query=%s" % search
     
     # Youtube request
-    session = urlopen(search)
-    page_html = session.read()
-    session.close()
+    try:
+        session = urlopen(search)
+        page_html = session.read()
+        session.close()
+    except HTTPError:
+        return "No page was found"
     
     # Video selection
-    videos = findall('watch\?v=\w*', str(page_html))
-    if videos:
-        return f'https://www.youtube.com/%s' % videos[0]
+    video = search_re('watch\?v=\w*', str(page_html))
+    if video:
+        return 'https://www.youtube.com/' + video.group(0)
     return 'No video was found'
