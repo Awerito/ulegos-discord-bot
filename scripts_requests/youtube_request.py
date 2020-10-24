@@ -12,7 +12,7 @@ def youtube_request(search):
 
     Returns
     -------
-    list[str]
+    str
         return the 'watch?v=' link segment
         
     """
@@ -28,4 +28,6 @@ def youtube_request(search):
     
     # Video selection
     videos = findall('watch\?v=\w*', str(page_html))
-    return videos
+    if videos:
+        return f'https://www.youtube.com/%s' % videos[0]
+    return 'No video was found'

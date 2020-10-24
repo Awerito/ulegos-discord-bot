@@ -2,9 +2,10 @@ import discord
 from discord.ext import commands
 import os
 from dotenv import load_dotenv
-# Custom
+# Scripts
 from scripts_requests.github_request import *
 from scripts_requests.wikipedia_request import *
+from scripts_requests.youtube_request import *
 
 
 bot = commands.Bot(command_prefix='./')
@@ -24,6 +25,12 @@ async def _github(ctx, *, search):
 @bot.command(aliases=['wikipedia', 'wiki', 'w'])
 async def _wikipedia(ctx, *, search):
     result = wikipedia_request(search)
+    await ctx.send(result)
+
+
+@bot.command(aliases=['youtube', 'yt'])
+async def _youtube(ctx, *, search):
+    result = youtube_request(search)
     await ctx.send(result)
 
 
