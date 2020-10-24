@@ -31,11 +31,9 @@ def reddit_request(search):
         return "Go to talk with your Boss of Career"
 
     # Post selection 
-    posts = search_re('/' + search + '/comments/\w*/\w*', str(html_page))
+    post = search_re('/' + search + '/comments/\w*/\w*', str(html_page))
 
-    pass
+    if post:
+        return 'https://www.reddit.com' + post.group(0)
+    return 'No post found'
 
-
-if __name__=="__main__":
-
-    print(reddit_request('r/gaming'))
