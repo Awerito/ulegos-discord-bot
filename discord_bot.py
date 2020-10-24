@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 from scripts_requests.github_request import *
 from scripts_requests.wikipedia_request import *
 from scripts_requests.youtube_request import *
+from scripts_requests.reddit_request import *
 
 
 bot = commands.Bot(command_prefix='./')
@@ -31,6 +32,12 @@ async def _wikipedia(ctx, *, search):
 @bot.command(aliases=['youtube', 'yt'])
 async def _youtube(ctx, *, search):
     result = youtube_request(search)
+    await ctx.send(result)
+
+
+@bot.command(aliases=['reddit', 'rd'])
+async def _reddit(ctx, *, search):
+    result = reddit_request(search)
     await ctx.send(result)
 
 
