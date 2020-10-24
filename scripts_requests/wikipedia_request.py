@@ -1,6 +1,5 @@
 from urllib.request import urlopen
 from urllib.error import HTTPError
-from re import findall
 from requests_html import HTML
 
 
