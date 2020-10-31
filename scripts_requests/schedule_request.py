@@ -40,6 +40,6 @@ def schedule_request(search):
         table_html = text.find(table_id, first=True)
         utf_8 = '<meta charset="utf-8">\n'
         render = from_string(utf_8 + table_html.html, 'out.jpeg')
-        return render
+        return "Success"
     except:
         return "No table was found"

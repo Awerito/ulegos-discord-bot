@@ -7,6 +7,7 @@ from scripts_requests.github_request import *
 from scripts_requests.wikipedia_request import *
 from scripts_requests.youtube_request import *
 from scripts_requests.reddit_request import *
+from scripts_requests.schedule_request import *
 
 
 bot = commands.Bot(command_prefix='./')
@@ -39,6 +40,15 @@ async def _youtube(ctx, *, search):
 async def _reddit(ctx, *, search):
     result = reddit_request(search)
     await ctx.send(result)
+
+
+@bot.command(aliases=['ulegos', 'ula'])
+async def _ulegos(ctx, *, search):
+    result = schedule_request(search)
+    if result == "Success":
+        await ctx.send(file=discord.File('out.jpeg'))
+    else:
+        await ctx.send(result)
 
 
 load_dotenv()
