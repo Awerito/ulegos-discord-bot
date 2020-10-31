@@ -4,7 +4,7 @@ from requests_html import HTML
 from imgkit import from_string
 
 def _find_table(level):
-    """I Hate UlagosVirtual"""
+    """Return the table ID by hand"""
 
     if level == 1:
         return 163
@@ -40,8 +40,8 @@ def schedule_request(search):
 
     Returns
     -------
-    HTML Object:
-        table tag that contain schedule
+    str:
+        Confirmation string
         
     """
 
@@ -66,7 +66,6 @@ def schedule_request(search):
         table_html = text.find(table_id, first=True)
         utf_8 = '<meta charset="utf-8">\n'
         from_string(utf_8 + table_html.html, 'out.jpeg')
-        print(table_html)
         return "Success"
     except:
         return "No table was found xd"
