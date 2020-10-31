@@ -1,6 +1,7 @@
 from urllib.request import urlopen
 from urllib.error import HTTPError
 from requests_html import HTML
+from imgkit import from_string
 
 
 def schedule_request(search):
@@ -18,13 +19,14 @@ def schedule_request(search):
         
     """
 
-    URL = "http://horarios.ulagosvirtual.cl/2do%20semestre%202020_years_days_horizontal.html" 
-    search = int(search)
-    table_id = "table_" + str(157 + 3 * search)
+    table_id = 157 + 3 * int(search)
+    url = "http://horarios.ulagosvirtual.cl/2do%20semestre%202020_years_days_horizontal.html" 
+    table_id = "#table_" + str(table_id)
+    url += table_id
 
     # Get HTML
     try:
-        session = urlopen(URL) 
+        session = urlopen(url) 
         html_page = session.read() 
         session.close()
     except HTTPError:
@@ -35,7 +37,8 @@ def schedule_request(search):
 
     # Find table
     try:
-        table_html = text.find('table#' + table_id)
-        return table_html
+        table_html = text.find(table_id, first=True)
+        render = from_string(table_html.html, 'out.png')
+        return render
     except:
         return "No table was found"
