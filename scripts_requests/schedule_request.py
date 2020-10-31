@@ -38,7 +38,8 @@ def schedule_request(search):
     # Find table
     try:
         table_html = text.find(table_id, first=True)
-        render = from_string(table_html.html, 'out.png')
+        utf_8 = '<meta charset="utf-8">\n'
+        render = from_string(utf_8 + table_html.html, 'out.jpeg')
         return render
     except:
         return "No table was found"
