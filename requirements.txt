@@ -1,3 +1,4 @@
 requests-html
 python-dotenv
 discord.py
+imgkit
