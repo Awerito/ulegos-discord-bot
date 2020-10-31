@@ -206,4 +206,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# Proyect related files
+*.jpeg
+
 # End of https://www.toptal.com/developers/gitignore/api/vim,linux,windows,python
