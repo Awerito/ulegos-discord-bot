@@ -1,7 +1,6 @@
 from urllib.request import urlopen
 from urllib.error import HTTPError
 from re import search as search_re
-from requests_html import HTML
 
 def reddit_request(search):
     """Parse and treat the results of a given search
